@@ -5,6 +5,12 @@
 *.tfstate
 *.tfstate.*
 
+# Plan output
+plan.out*
+
+# backend.tf
+backend.tf
+
 # Crash log files
 crash.log
 
@@ -27,3 +33,7 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+
+# credential directories
+
+credentials/
