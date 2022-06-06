@@ -1,9 +1,13 @@
+.DS_Store
+*.secrets
+.env
 # Local .terraform directories
 **/.terraform/*
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
+*.terraform.lock.hcl
 
 # Plan output
 plan.out*
