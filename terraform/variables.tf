@@ -1,7 +1,7 @@
 locals {
   region               = "europe-west1-b"
   zone                 = "europe-west1-b"
-  airbyte_machine_type = "e2-small"
+  airbyte_machine_type = "e2-medium"
   # metabase_machine_type = "e2-small"
   # airflow_machine_type  = "e2-medium"
   # source_datasets = {
@@ -15,9 +15,9 @@ variable "project_id" {
   type = string
 }
 
-variable "billing_id" {
-  type = string
-}
+# variable "billing_id" {
+#   type = string
+# }
 
 # variable "folder_id" {
 #   type = string
