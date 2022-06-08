@@ -3,7 +3,7 @@ resource "google_project_service" "data_project_services" {
   for_each = toset(
     [
       "compute.googleapis.com",
-      #     "bigquery.googleapis.com",
+      "bigquery.googleapis.com",
       "logging.googleapis.com",
       "serviceusage.googleapis.com",
       "cloudresourcemanager.googleapis.com",

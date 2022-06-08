@@ -1,11 +1,17 @@
 resource "google_compute_instance" "airbyte_instance" {
-  name                    = "${var.project_id}-airbyte"
-  machine_type            = local.airbyte_machine_type
-  project                 = var.project_id
-  metadata_startup_script = file("./sh_scripts/airbyte.sh")
+  name                      = "${var.project_id}-airbyte"
+  machine_type              = local.airbyte_machine_type
+  project                   = var.project_id
+  metadata_startup_script   = file("./sh_scripts/airbyte.sh")
+  allow_stopping_for_update = true
+
+  resource_policies = [
+    google_compute_resource_policy.morning_one_hour_up.id
+  ]
 
   depends_on = [
     google_project_service.data_project_services,
+    #google_project_iam_binding.compute_developer_bindings
   ]
 
   boot_disk {
@@ -22,6 +28,21 @@ resource "google_compute_instance" "airbyte_instance" {
     }
   }
 }
+resource "google_compute_resource_policy" "morning_one_hour_up" {
+  name        = "morning-1-hour-up"
+  description = "Start and stop instances"
+  project     = var.project_id
+  instance_schedule_policy {
+    vm_start_schedule {
+      schedule = "0 8 * * *"
+    }
+    vm_stop_schedule {
+      schedule = "0 9 * * *"
+    }
+    time_zone = "Europe/Madrid"
+  }
+}
+
 
 # resource "google_compute_instance" "metabase_instance" {
 #   name                    = "${var.project_id}-metabase"

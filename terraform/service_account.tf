@@ -1,11 +1,8 @@
 # # Bigquery Owner
-# resource "google_service_account" "bq_owner" {
-#   account_id = "bq-owner"
-#   project    = var.project_id
-#   depends_on = [
-#     google_project.data_project,
-#   ]
-# }
+resource "google_service_account" "bq_owner" {
+  account_id = "bq-owner"
+  project    = var.project_id
+}
 
 # Airbyte service account
 resource "google_service_account" "airbyte_sa" {

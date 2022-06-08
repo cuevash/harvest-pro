@@ -1,5 +1,6 @@
 locals {
-  region               = "europe-west1-b"
+  app_name             = "harvest-pro"
+  region               = "europe-west1"
   zone                 = "europe-west1-b"
   airbyte_machine_type = "e2-medium"
   # metabase_machine_type = "e2-small"
